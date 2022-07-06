@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	overflow-x: hidden;
+	font-family: arial, Helvetica sans-serif;
+}
+
+
+/* navbar */
+nav {
+	font-family: 'Bebas Neue', cursive;
+    display: flex;
+    background-color: #777;
+    justify-content: space-around;
+    /* padding: 10px 0; */
+    color:rgb(212, 212, 212);
+    height: 50px;
+    align-items: center;
+}
+
+nav .logo {
+    letter-spacing: 3px;
+    font-size: 1.5em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+nav ul li a {
+    color:rgb(206, 206, 206);
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+nav ul li a:hover {
+    color:rgb(255, 255, 255);
+}
+
+
+/* Hamburger Menu */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu-toggle input {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    opacity: .0;
+    left: -6px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color:rgb(206, 206, 206);
+    border-radius: 3px;
+    transition: 0.5s;
+}
+
+/* Hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked~span:nth-child(2) {
+    transform:rotate(45deg) translate(-1px, -1px);
+}
+.menu-toggle input:checked~span:nth-child(4) {
+    transform:rotate(-45deg) translate(-1px,0);
+}
+.menu-toggle input:checked~span:nth-child(3) {
+    transform: scale(0);
+    opacity: 0;
+}
+
+
+
+
+/*  Responsif Breakpoint */
+
+/* Ukuran tablet */
+@media screen and (max-width: 768px) {
+    nav ul{
+        width: 50%;
+    }
+}
+
+/* ukuran mobile */
+@media screen and (max-width: 576px) {
+    nav ul {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40%;
+        height: 60vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        z-index:-1;
+        background-color: #777;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+    nav ul.slide {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+
+    .menu-toggle{
+        display: flex;
+    }
+}
+
+
+/*	Slider	*/
+
+.slider { 
+	z-index: -2;
+	border: 10px solid #efefef; 
+	position: relative; 
+	overflow: hidden; 
+	background: #efefef;
+}
+ 
+.slider { 
+	margin:20px auto;
+	width: 400px;
+	height: 220px; 
+}
+ 
+.isi-slider img { 
+	width: 400px;
+	height: 220px; 
+	float: left;
+}
+ 
+.isi-slider { 
+	position: absolute; 
+	width:1600px;  
+ 
+	/*pengaturan durasi lama tampil gambar bisa di atur di bawah ini*/
+	animation-name:slider;
+	animation-duration:16s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count:infinite;
+	-webkit-animation-name:slider;
+	-webkit-animation-duration:16s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-name:slider;
+	-moz-animation-duration:16s;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count:infinite;
+	-o-animation-name:slider;
+	-o-animation-duration:16s;
+	-o-animation-timing-function: ease-in-out;
+	-o-animation-iteration-count:infinite;
+}
+ 
+ 
+/*saat gambar di hover oleh cursor mouse maka berhenti slide*/
+.isi-slider:hover { 
+	-webkit-animation-play-state:paused; 
+	-moz-animation-play-state:paused; 
+	-o-animation-play-state:paused; 
+	animation-play-state:paused; }
+}
+ 
+.isi-slider img { 
+	float: right; 
+}
+ 
+.slider:after { 
+	font-size: 150px; 
+	position: absolute; 
+	z-index: 12; 
+	color: rgba(255,255,255, 0); 
+	left: 100px; top: 80px; 
+	-webkit-transition: 1s all ease-in-out; 
+	-moz-transition: 1s all ease-in-out; 
+	transition: 1s all ease-in-out; 
+}
+ 
+.slider:hover:after { 
+	color: rgba(255,255,255, 0.6);  
+}
+ 
+
+ 
+@-moz-keyframes slider {     
+	0% {
+		left: 0; opacity: 0; 
+	}     
+	2% {
+		opacity: 1; 
+	}     
+	20% {
+		left: 0; opacity: 1; 
+	}     
+	21% {
+		opacity: 0; 
+	}     
+	24% {
+		opacity: 0; 
+	}     
+	25% {
+		left: -400px; opacity: 1; 
+	}       
+	45% {
+		left: -400px; opacity: 1; 
+	}     
+	46% {
+		opacity: 0; 
+	}     
+	48% {
+		opacity: 0; 
+	}     
+	50% {
+		left: -800px; opacity: 1; 
+	}     
+	70% {
+		left: -800px; opacity: 1; 
+	}     
+	72% {
+		opacity: 0; 
+	}     
+	74% {
+		opacity: 0; 
+	}    
+	75% {
+		left: -1200px; opacity: 1; 
+	}   	
+	95% {
+		left: -1200px; opacity: 1; 
+	}   	
+	97% { 
+		left: -1200px; opacity: 0;
+	}   	
+	100% {
+		left: 0; opacity: 0; 
+	}
+} 
+ 
+@-webkit-keyframes slider {     
+	0% {
+		left: 0; opacity: 0; 
+	}     
+	2% {
+		opacity: 1; 
+	}     
+	20% {
+		left: 0; opacity: 1; 
+	}     
+	21% {
+		opacity: 0; 
+	}     
+	24% {
+		opacity: 0; 
+	}     
+	25% {
+		left: -400px; opacity: 1; 
+	}       
+	45% {
+		left: -400px; opacity: 1; 
+	}     
+	46% {
+		opacity: 0; 
+	}     
+	48% {
+		opacity: 0; 
+	}     
+	50% {
+		left: -800px; opacity: 1; 
+	}     
+	70% {
+		left: -800px; opacity: 1; 
+	}     
+	72% {
+		opacity: 0; 
+	}     
+	74% {
+		opacity: 0; 
+	}    
+	75% {
+		left: -1200px; opacity: 1; 
+	}   	
+	95% {
+		left: -1200px; opacity: 1; 
+	}   	
+	97% { 
+		left: -1200px; opacity: 0;
+	}   	
+	100% {
+		left: 0; opacity: 0; 
+	}
+} 
+ 
+ 
+@keyframes slider {     
+	0% {
+		left: 0; opacity: 0; 
+	}     
+	2% {
+		opacity: 1; 
+	}     
+	20% {
+		left: 0; opacity: 1; 
+	}     
+	21% {
+		opacity: 0; 
+	}     
+	24% {
+		opacity: 0; 
+	}     
+	25% {
+		left: -400px; opacity: 1; 
+	}     
+	45% {
+		left: -400px; opacity: 1; 
+	}     
+	46% {
+		opacity: 0; 
+	}     
+	48% {
+		opacity: 0; 
+	}     
+	50% {
+		left: -800px; opacity: 1; 
+	}     
+	70% {
+		left: -800px; opacity: 1; 
+	}     
+	72% {
+		opacity: 0; 
+	}     
+	74% {
+		opacity: 0; 
+	}    
+	75% {
+		left: -1200px; opacity: 1; 
+	}   	
+	95% {
+		left: -1200px; opacity: 1; 
+	}   	
+	97% { 
+		left: -1200px; opacity: 0; 
+	} 
+ 
+	100% {
+		left: 0; opacity: 0; 
+	}
+}
+
+
